@@ -65,14 +65,11 @@
             </div>
             <div class="hero-image">
                 {#each heroImages as image, i (image)}
-                    {#if i === currentImageIndex}
-                        <img
-                            src={image}
-                            alt="PLUR Marketplace"
-                            class="fade-image"
-                            transition:fade
-                        />
-                    {/if}
+                    <img
+                        src={image}
+                        alt="PLUR Marketplace"
+                        class={i === currentImageIndex ? "active" : ""}
+                    />
                 {/each}
             </div>
         </div>
@@ -142,21 +139,14 @@
     }
 
     .hero-image img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 8px;
-        object-fit: contain;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        transition: opacity 3.5s ease-in-out; /* Smoother transition with longer duration and easing */
-        opacity: 0; /* Default state is hidden */
-    }
+    display: none; /* Hide all images by default */
+}
+
 
     
-
-    .hero-image img.fade-image {
-    opacity: 1; /* Fade-in effect */
-    }
-
+.hero-image img.active {
+    display: block; /* Show only the current active image */
+}
 
     /* Portrait mode adjustments */
     @media (max-width: 768px) and (orientation: portrait) {
