@@ -1,5 +1,22 @@
 <script lang="ts">
-    export let heroImage: string = "images/background_removed_image_zRIMna50TsCjq9ikT99k0w.png"; // Update this with your provided image path
+    import { fade } from 'svelte/transition';
+
+    // Array of hero images
+    const heroImages: string[] = [
+        "/images/m1.png",
+        "/images/m2.png",
+        "/images/m3.png",
+        "/images/fm1.png",
+        "/images/fm2.png",
+        "/images/k1.png"
+    ];
+
+    let currentImageIndex = 0;
+
+    // Function to switch images
+    setInterval(() => {
+        currentImageIndex = (currentImageIndex + 1) % heroImages.length;
+    }, 5000); // Switch images every 5 seconds
 </script>
 
 <section class="hero">
@@ -14,7 +31,16 @@
             <button class="cta-button">Explore Now</button>
         </div>
         <div class="hero-image">
-            <img src={heroImage} alt="PLUR Marketplace" />
+            {#each heroImages as image, i (image)}
+                {#if i === currentImageIndex}
+                    <img
+                        src={image}
+                        alt="PLUR Marketplace"
+                        class="fade-image"
+                        transition:fade
+                    />
+                {/if}
+            {/each}
         </div>
     </div>
 </section>
@@ -24,6 +50,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-top: 200px;
+        margin-bottom: 200px;
         padding: 2rem;
         background: linear-gradient(120deg, #f9f9f9, #f0f0f0);
     }
@@ -49,7 +77,7 @@
     }
 
     .hero-text h1 span {
-        color: #25d366; /* WhatsApp green for accent */
+        color: #333; 
         font-weight: bold;
     }
 
@@ -69,7 +97,7 @@
     .cta-button {
         padding: 0.75rem 1.5rem;
         font-size: 1rem;
-        background-color: #25d366; /* WhatsApp green */
+        background-color: #333; 
         color: white;
         border: none;
         border-radius: 4px;
@@ -78,31 +106,24 @@
     }
 
     .cta-button:hover {
-        background-color: #1da851;
+        background-color: #444;
     }
 
     .hero-image {
         flex: 1;
         min-width: 300px;
         text-align: center;
+        position: relative;
     }
 
-    .hero-image img {
+    .fade-image {
         max-width: 100%;
         height: auto;
-    }
-
-    @media (max-width: 768px) {
-        .hero-content {
-            flex-direction: column;
-        }
-
-        .hero-text {
-            text-align: center;
-        }
-
-        .cta-button {
-            align-self: center;
-        }
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
     }
 </style>
