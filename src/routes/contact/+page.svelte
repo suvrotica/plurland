@@ -49,7 +49,7 @@
 
     .heading span {
         font-weight: bold;
-        color: #25d366; /* WhatsApp green */
+        color: #444 
     }
 
     .contact-form {
@@ -78,7 +78,7 @@
         padding: 0.75rem 1.5rem;
         font-size: 1rem;
         color: #fff;
-        background-color: #25d366; /* WhatsApp green */
+        background-color: #444; 
         border: none;
         border-radius: 4px;
         cursor: pointer;
@@ -86,6 +86,6 @@
     }
 
     .send-button:hover {
-        background-color: #1da851; /* Darker WhatsApp green */
+        background-color: #333; 
     }
 </style>
