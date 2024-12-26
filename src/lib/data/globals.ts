@@ -51,11 +51,6 @@ export const branches = [
         address: "PLUR Marketplace, Darjeeling",
         image: heroImages[5]
     },
-    {
-        id: 6,
-        name: "Gangtok Branch",
-        address: "PLUR Marketplace, Sikkim",
-        image: heroImages[4]
-    }
+   
     
 ];
